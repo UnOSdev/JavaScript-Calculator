@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    body{
+        padding: 0;
+        width: 600px;
+        margin: 0 auto;
+    }
+    html{
+        padding: 0;
+        margin: 0;
+    }
+    .container{
+        font-family: sans-serif;
+        text-align: center;
+    }
+    .math{
+        margin-bottom: 50px;
+    }
+    button{
+        margin: 30px 225px;
+        width: 100px;
+        height: 100px;
+    }
+    </style>
+    <title>Main Page</title>
+</head>
+<body>
+    <div class="math" >
+    <div class="container">
+        <h1 id='textmain' ></h1>
+    </div>
+    <input type="text" id="number1" maxlength="20" placeholder="please write only numbers">
+    <select id="prop" >
+        <option>*</option>
+        <option>+</option>
+        <option>-</option>
+        <option>:</option>
+    </select>
+    <input type="text" id="number2" maxlength="20" placeholder="please write only numbers">
+    <button onclick="calis()" type="button">Go</button>
+</div>
+<div>
+<h1 style="text-align: center;" id='osarea'></h1>
+<input type="text" style="width: 20px;height: 30px;margin-left:35px ;" maxlength="2" id='osnumber1'><br>
+<input type="text" style="width: 35px;height: 25px;" maxlength="4" id='osnumber2' >
+<button onclick="os()">Os the numbers</button>
+</div>
+
+
+
+    <script>
+        function os(){
+            var high = document.getElementById('osnumber1').value
+            var down = document.getElementById('osnumber2').value
+            var downr = down
+            var area = document.getElementById('osarea')
+            for(var i = 1;i < high;i++){
+                down *= downr
+            }
+            if (high == 0){
+                area.innerHTML = 1
+            }else{
+            area.innerHTML = down
+            }
+        }
+        function calis(){
+            var number1 = document.getElementById('number1').value
+            var number2 = document.getElementById('number2').value
+            var oper = document.getElementById('prop').value
+            var area = document.getElementById('textmain')
+            if (oper == '*'){
+                var result = (number1 * number2);
+            }else if(oper == '+'){
+                var result = (number1 + number2);
+            }else if(oper == '-'){
+                var result = (number1 - number2);
+            }else if(oper == ':'){
+                var result = (number1 / number2);
+            }
+            
+            if (isNaN(result)){
+                area.innerHTML='Please write numbers...';
+            }else{
+                area.innerHTML = "The Result is: "+ result;
+            }
+
+        }
+    </script>
+</body>
+</html>
